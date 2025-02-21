@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FilePlus, CalendarCheck, User } from "lucide-react";
 import "./Navbar.css";
 import logo1 from "../../assets/logo1.png";
@@ -9,18 +9,18 @@ import search_icon_dark from "../../assets/search-b.png";
 import toggle_light from "../../assets/night.png";
 import toggle_dark from "../../assets/day.png";
 
-const Navbar = ({ theme, setTheme }) => {
+const Navbar = ({ theme, setTheme, setIsAuthenticated }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [username, setUsername] = useState(""); // Store the user's name
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Get the username from localStorage
     const storedEmail = localStorage.getItem("userEmail");
     if (storedEmail) {
-      setUsername(storedEmail.split("@")[0]); // Extract username from email
+      setUsername(storedEmail.split("@")[0]);
     }
   }, []);
 
@@ -42,6 +42,13 @@ const Navbar = ({ theme, setTheme }) => {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("userToken");
+    localStorage.removeItem("userEmail");
+    setIsAuthenticated(false); // Update state to remove Navbar
+    navigate("/signin", { replace: true }); // Redirect immediately
   };
 
   return (
@@ -111,13 +118,7 @@ const Navbar = ({ theme, setTheme }) => {
                 <li>
                   <Link to="/profile-settings">Settings</Link>
                 </li>
-                <li
-                  onClick={() => {
-                    localStorage.removeItem("userToken");
-                    localStorage.removeItem("userEmail");
-                    window.location.href = "/signin"; // Redirect to login
-                  }}
-                >
+                <li className="kan" onClick={handleLogout}>
                   Logout
                 </li>
               </ul>
@@ -147,6 +148,7 @@ const Navbar = ({ theme, setTheme }) => {
 Navbar.propTypes = {
   theme: PropTypes.string.isRequired,
   setTheme: PropTypes.func.isRequired,
+  setIsAuthenticated: PropTypes.func.isRequired, // Add this prop
 };
 
 export default Navbar;

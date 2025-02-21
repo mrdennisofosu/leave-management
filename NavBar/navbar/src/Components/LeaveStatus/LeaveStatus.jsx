@@ -52,8 +52,10 @@ const LeaveStatus = ({ theme }) => {
           <tr>
             <th>ID</th>
             <th>Leave Type</th>
-            <th>Dates</th>
+            <th>Start Date</th>
+            <th>End Date</th>
             <th>Total Days</th>
+            <th>Reason</th>
             <th>Emergency Contact</th>
             <th>Backup Person</th>
             <th>Approval Manager</th>
@@ -62,34 +64,42 @@ const LeaveStatus = ({ theme }) => {
           </tr>
         </thead>
         <tbody>
-          {filteredRequests.map((request) => (
-            <tr key={request.id}>
-              <td>{request.id}</td>
-              <td>{request.leaveType}</td>
-              <td>
-                {request.startDate} - {request.endDate}
-              </td>
-              <td>{request.totalDays}</td>
-              <td>{request.emergencyContact}</td>
-              <td>{request.backupPerson}</td>
-              <td>{request.approvalManager}</td>
-              <td>
-                <span
-                  className={`status-badge ${request.status.toLowerCase()}`}
-                >
-                  {request.status}
-                </span>
-              </td>
-              <td>
-                {request.status === "pending" && (
-                  <button className="cancel-btn">Cancel</button>
-                )}
-                {request.status === "approved" && (
-                  <button className="download-btn">Download Letter</button>
-                )}
+          {filteredRequests.length > 0 ? (
+            filteredRequests.map((request) => (
+              <tr key={request.id}>
+                <td>{request.id}</td>
+                <td>{request.leaveType}</td>
+                <td>{request.startDate}</td>
+                <td>{request.endDate}</td>
+                <td>{request.totalDays}</td>
+                <td>{request.reason}</td>
+                <td>{request.emergencyContact}</td>
+                <td>{request.backupPerson}</td>
+                <td>{request.approvalManager}</td>
+                <td>
+                  <span
+                    className={`status-badge ${request.status.toLowerCase()}`}
+                  >
+                    {request.status}
+                  </span>
+                </td>
+                <td>
+                  {request.status === "pending" && (
+                    <button className="cancel-btn">Cancel</button>
+                  )}
+                  {request.status === "approved" && (
+                    <button className="download-btn">Download Letter</button>
+                  )}
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="11" className="no-data">
+                No leave requests found
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>

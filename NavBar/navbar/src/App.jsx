@@ -10,7 +10,6 @@ import RequestLeaveForm from "./Components/RequestLeaveForm/RequestLeaveForm";
 import LeaveStatus from "./Components/LeaveStatus/LeaveStatus";
 import SignIn from "./Components/Auth/SignIn";
 import SignUp from "./Components/Auth/SignUp";
-
 import "./App.css";
 import { LeaveProvider } from "./Components/LeaveContext/LeaveContext";
 
@@ -21,7 +20,7 @@ const App = () => {
     () => localStorage.getItem("theme") || "light"
   );
   const [isAuthenticated, setIsAuthenticated] = useState(
-    () => !!localStorage.getItem("userToken")
+    () => !!localStorage.getItem("userToken") // Check authentication on page load
   );
 
   useEffect(() => {
@@ -32,10 +31,17 @@ const App = () => {
     <LeaveProvider>
       <Router>
         <div className={`app ${theme}`}>
-          {isAuthenticated && <Navbar theme={theme} setTheme={setTheme} />}
+          {/* Show Navbar only if user is authenticated */}
+          {isAuthenticated && (
+            <Navbar
+              theme={theme}
+              setTheme={setTheme}
+              setIsAuthenticated={setIsAuthenticated}
+            />
+          )}
           <div className="content">
             <Routes>
-              {/* Redirect to Sign In by default */}
+              {/* Redirect users based on authentication */}
               <Route
                 path="/"
                 element={
@@ -54,26 +60,42 @@ const App = () => {
               />
               <Route path="/signup" element={<SignUp />} />
 
-              {/* Protected Routes */}
-              {isAuthenticated ? (
-                <>
-                  <Route
-                    path="/request-leave"
-                    element={<RequestLeaveForm theme={theme} />}
-                  />
-                  <Route
-                    path="/leave-status"
-                    element={<LeaveStatus theme={theme} />}
-                  />
-                  <Route path="/leave-policy" element={<BlankPage />} />
-                  <Route path="/profile-settings" element={<BlankPage />} />
-                </>
-              ) : (
-                // Redirect unauthenticated users
-                <>
-                  <Route path="*" element={<Navigate to="/signin" />} />
-                </>
-              )}
+              {/* Protected Routes (Accessible only if logged in) */}
+              <Route
+                path="/request-leave"
+                element={
+                  isAuthenticated ? (
+                    <RequestLeaveForm theme={theme} />
+                  ) : (
+                    <Navigate to="/signin" />
+                  )
+                }
+              />
+              <Route
+                path="/leave-status"
+                element={
+                  isAuthenticated ? (
+                    <LeaveStatus theme={theme} />
+                  ) : (
+                    <Navigate to="/signin" />
+                  )
+                }
+              />
+              <Route
+                path="/leave-policy"
+                element={
+                  isAuthenticated ? <BlankPage /> : <Navigate to="/signin" />
+                }
+              />
+              <Route
+                path="/profile-settings"
+                element={
+                  isAuthenticated ? <BlankPage /> : <Navigate to="/signin" />
+                }
+              />
+
+              {/* Redirect all unknown routes to Sign In */}
+              <Route path="*" element={<Navigate to="/signin" />} />
             </Routes>
           </div>
         </div>

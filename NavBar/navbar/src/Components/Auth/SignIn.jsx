@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import MockLeaveRequests from "../../Data/MockLeaveRequests"; // Ensure correct path
 import "./Auth.css";
-import MockLeaveRequests from "../../Data/MockLeaveRequests";
 
 const SignIn = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState("");
@@ -12,21 +12,17 @@ const SignIn = ({ setIsAuthenticated }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Find user in mock data (case-insensitive email match)
+    // Find user in mock data
     const user = MockLeaveRequests.find(
-      (u) =>
-        u.email.toLowerCase() === email.toLowerCase() && u.password === password
+      (u) => u.email === email && u.password === password
     );
 
     if (user) {
       // Store session data
-      localStorage.setItem(
-        "userToken",
-        JSON.stringify({ email: user.email, id: user.id })
-      );
-      localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("userToken", "dummyToken");
+      localStorage.setItem("userEmail", email); // Ensure email is stored
       setIsAuthenticated(true);
-      navigate("/request-leave"); // Redirect after successful login
+      navigate("/request-leave"); // Redirect to request leave page
     } else {
       setError("Invalid email or password");
     }
