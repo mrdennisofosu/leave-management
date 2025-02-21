@@ -1,0 +1,91 @@
+.request-leave-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    /* Light mode form background color */
+}
+
+.request-leave-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.request-leave-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.request-leave-form input,
+.request-leave-form select,
+.request-leave-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    /* Ensure the element's width includes padding and border */
+}
+
+.request-leave-form textarea {
+    resize: none;
+    /* Prevent resizing */
+}
+
+.request-leave-form input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.request-leave-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.request-leave-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.request-leave-form small {
+    display: block;
+    margin-top: -15px;
+    margin-bottom: 10px;
+    color: #888;
+}
+
+.request-leave-form.dark {
+    background-color: #333;
+    /* Dark mode form background color */
+    color: #fff;
+    /* Text color for dark mode */
+    border: 1px solid #444;
+}
+
+.request-leave-form.dark input,
+.request-leave-form.dark select,
+.request-leave-form.dark textarea {
+    background-color: #555;
+    /* Dark mode input background color */
+    color: #fff;
+    /* Text color for dark mode */
+    border: 1px solid #666;
+}
+
+.request-leave-form.dark button {
+    background-color: #0056b3;
+}
+
+.request-leave-form.dark button:disabled {
+    background-color: #666;
+}

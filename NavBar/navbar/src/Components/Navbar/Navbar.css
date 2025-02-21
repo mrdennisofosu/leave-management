@@ -1,0 +1,343 @@
+.navbar {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 7%;
+    transition: 0.5s;
+    box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.navbar.light {
+    background: #fff;
+    color: #000;
+}
+
+.navbar.dark {
+    background: #000;
+    color: #fff;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 4px;
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.3s, background-color 0.3s;
+    display: flex;
+    align-items: center;
+    /* Ensure vertical alignment */
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    padding: 5px 6px;
+}
+
+.nav-links li.active {
+    color: #079aef;
+    background-color: rgba(30, 109, 194, 0.1);
+    border-radius: 5px;
+}
+
+.nav-links li a .icon {
+    margin-right: 2px;
+    height: 15px;
+    width: 15px;
+}
+
+.icon2 {
+    width: 15px;
+    height: 15px;
+    margin-right: 0.5px;
+}
+
+.dropdown {
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.nav-links li:hover {
+    color: #079aef;
+    background-color: rgba(30, 109, 194, 0.1);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.nav-links .dropdown {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    /* Ensure vertical alignment */
+}
+
+.nav-links .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dark .request-leave:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Icon styling */
+.icon {
+    width: 15px;
+    height: 15px;
+}
+
+.nav-links .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.nav-links .dropdown-menu li {
+    padding: 8px 16px;
+}
+
+.nav-links .dropdown-menu li a {
+    color: black;
+    text-decoration: none;
+}
+
+.nav-links .dropdown-menu li a:hover {
+    background-color: #5690bd;
+    border-radius: 30px;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    filter: brightness(0) saturate(100%) invert(32%) sepia(94%) saturate(490%) hue-rotate(90deg) brightness(94%) contrast(98%);
+    transition: filter 0.3s ease-in-out;
+}
+
+@media (prefers-color-scheme: dark) {
+    .logo {
+        filter: brightness(0) saturate(100%) invert(32%) sepia(94%) saturate(490%) hue-rotate(90deg) brightness(94%) contrast(98%);
+    }
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+}
+
+.subscript-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    font-weight: 500;
+    color: inherit;
+    opacity: 0.6;
+    line-height: 1.0;
+    margin-left: 3px;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin-left: 10px;
+    padding-left: 10px;
+    max-width: 600px;
+}
+
+.toggle {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: rgba(26, 25, 25, 0.2);
+    padding: 2px 5px;
+    border-radius: 20px;
+    margin-left: 10px;
+    height: 30px;
+    max-width: 200px;
+}
+
+.search-box input {
+    padding: 3px;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: #050101;
+    font-size: 12px;
+    max-width: 200px;
+    cursor: pointer;
+}
+
+.search-box input::placeholder {
+    color: #000000;
+}
+
+.search-box img {
+    width: 14px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.dark .search-box {
+    background: #454141;
+}
+
+.dark .search-box input {
+    color: #fff;
+}
+
+.dark .search-box input::placeholder {
+    color: #ffffff;
+}
+
+/* Mobile view adjustments */
+.menu-button {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.nav-items {
+    display: flex;
+}
+
+.nav-items.open {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .nav-items {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .search-box {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+.menu-button {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1100;
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .nav-items {
+        display: none;
+        flex-direction: row;
+        /* Ensures items are on the same line */
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: white;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        padding: 10px;
+    }
+
+    .nav-items.open {
+        display: flex;
+    }
+
+    .menu-button {
+        display: block;
+        margin-left: 20px;
+        /* Added spacing between toggle and menu button */
+    }
+
+    .toggle {
+        margin-right: 20px;
+        margin-left: 0px;
+        /* Added more space before the menu button */
+    }
+
+    .search-box {
+        max-width: 90px;
+        /* Reduced width for better fit */
+        padding: 2px 5px;
+        margin-right: 0px;
+        margin-bottom: 12px;
+    }
+
+    .search-box input {
+        font-size: 10px;
+        /* Smaller font for better layout */
+    }
+}

@@ -1,0 +1,41 @@
+.app {
+    font-family: Arial, sans-serif;
+    padding-top: 70px;
+    /* Prevent content from hiding behind the fixed navbar */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Default Light Theme */
+.app.light {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.app.dark {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+/* Login Page Light Background */
+.auth-container {
+    background-color: #ffffff;
+    /* Ensure login page is always light */
+    color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+/* Root Variables for Light Mode */
+:root {
+    --bg-color: #f9f9f9;
+    --text-color: #333;
+    --border-color: #ddd;
+    --input-bg: #fff;
+    --table-bg: #fff;
+    --table-header-bg: #f3f3f3;
+    --table-hover-bg: #f1f1f1;
+}
