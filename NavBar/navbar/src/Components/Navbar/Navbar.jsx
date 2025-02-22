@@ -116,7 +116,7 @@ const Navbar = ({ theme, setTheme, setIsAuthenticated }) => {
             {profileDropdownOpen && (
               <ul className="dropdown-menu">
                 <li>
-                  <Link to="/profile-settings">Settings</Link>
+                  <Link to="/settings">Settings</Link>
                 </li>
                 <li className="kan" onClick={handleLogout}>
                   Logout

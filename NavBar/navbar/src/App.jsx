@@ -10,6 +10,7 @@ import RequestLeaveForm from "./Components/RequestLeaveForm/RequestLeaveForm";
 import LeaveStatus from "./Components/LeaveStatus/LeaveStatus";
 import SignIn from "./Components/Auth/SignIn";
 import SignUp from "./Components/Auth/SignUp";
+import Settings from "./Components/Settings/Settings";
 import "./App.css";
 import { LeaveProvider } from "./Components/LeaveContext/LeaveContext";
 
@@ -19,13 +20,22 @@ const App = () => {
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") || "light"
   );
+  const [language, setLanguage] = useState(
+    () => localStorage.getItem("language") || "en"
+  );
   const [isAuthenticated, setIsAuthenticated] = useState(
     () => !!localStorage.getItem("userToken") // Check authentication on page load
   );
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
+    document.body.className = theme; // Apply theme to body
   }, [theme]);
+
+  useEffect(() => {
+    localStorage.setItem("language", language);
+    // Apply language changes as needed
+  }, [language]);
 
   return (
     <LeaveProvider>
@@ -91,6 +101,12 @@ const App = () => {
                 path="/profile-settings"
                 element={
                   isAuthenticated ? <BlankPage /> : <Navigate to="/signin" />
+                }
+              />
+              <Route
+                path="/settings"
+                element={
+                  isAuthenticated ? <Settings /> : <Navigate to="/signin" />
                 }
               />
 
