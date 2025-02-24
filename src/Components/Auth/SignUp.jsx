@@ -29,7 +29,7 @@ const SignUp = () => {
   return (
     <div className="auth-container">
       <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="auth-form">
         <div className="input-group">
           <label>Full Name</label>
           <input
@@ -81,6 +81,12 @@ const SignUp = () => {
         <button type="submit" className="auth-btn">
           Sign Up
         </button>
+
+        <div className="social-login">
+          <button className="google-btn">Sign up with Google</button>
+          <button className="facebook-btn">Sign up with Facebook</button>
+          <button className="apple-btn">Sign up with Apple</button>
+        </div>
 
         <p>
           Already have an account? <Link to="/signin">Sign In</Link>

@@ -39,3 +39,15 @@
     --table-header-bg: #f3f3f3;
     --table-hover-bg: #f1f1f1;
 }
+
+.button{
+    background-color: #4500ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}

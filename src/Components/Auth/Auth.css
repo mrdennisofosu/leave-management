@@ -1,0 +1,158 @@
+/* Authentication Container */
+.auth-container {
+    width: 80%;
+    /* Make the container bigger but keep margin spacing */
+    max-width: 700px;
+    /* Increase max width */
+    height: auto;
+    /* Allow dynamic height */
+    margin: auto;
+    /* Keep it centered */
+    padding: 25px;
+
+    /* Fading sky-blue background */
+    background: linear-gradient(to bottom, #87CEFA, #E0F7FA);
+    border-radius: 12px;
+
+    /* Enhanced box-shadow for a premium look */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Header Styling */
+.auth-container h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    /* Slightly larger font for better visibility */
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+/* Input Group */
+.input-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+/* Labels */
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Input Fields */
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Input Focus Effect */
+.input-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+/* Authentication Button */
+.auth-btn {
+    width: 100%;
+    padding: 8px;
+    background: linear-gradient(to right, #4790de, #1a63b1);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Button Hover Effect */
+.auth-btn:hover {
+    background: linear-gradient(to right, #0056b3, #004099);
+    transform: scale(1.03);
+}
+
+/* Social Login Buttons */
+.social-login {
+    margin-top: 20px;
+}
+
+.social-login button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.google-btn {
+    background: #b5382d;
+    color: white;
+}
+
+.google-btn:hover {
+    background: #961504;
+    transform: scale(1.03);
+}
+
+.facebook-btn {
+    background: #315094;
+    color: white;
+}
+
+.facebook-btn:hover {
+    background: #0a3082;
+    transform: scale(1.03);
+}
+
+.apple-btn {
+    background: #252222;
+    color: white;
+}
+
+.apple-btn:hover {
+    background: #060505;
+    transform: scale(1.03);
+}
+
+/* Text Below Form */
+p {
+    margin-top: 15px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Links */
+p a {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Link Hover Effect */
+p a:hover {
+    text-decoration: underline;
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 480px) {
+    .auth-container {
+        padding: 20px;
+    }
+}

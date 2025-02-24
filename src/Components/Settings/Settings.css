@@ -1,0 +1,243 @@
+.settings-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    
+    /* Elegant box shadow for depth */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); 
+    
+    transition: all 0.3s ease-in-out;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+
+.settings-container.dark {
+    background-color: var(--bg-dark);
+        color: var(--text-dark);
+        box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Headers */
+.settings-container h2,
+.settings-container h3,
+.settings-container label,
+.settings-container p {
+    color: var(--text-light);
+}
+
+/* Dark Mode Text */
+.settings-container.dark h2,
+.settings-container.dark h3,
+.settings-container.dark label,
+.settings-container.dark p {
+    color: var(--text-dark);
+}
+
+/* Sections */
+.settings-container section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid var(--border-light);
+    border-radius: 5px;
+    background-color: var(--bg-light);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Dark Mode Sections */
+.settings-container.dark section {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-dark);
+}
+
+.settings-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.settings-container h2.dark {
+    color: white;
+}
+
+.settings-container section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.settings-container section.dark {
+    background-color: #444;
+    border-color: #555;
+}
+
+.settings-container section h3 {
+    margin-bottom: 10px;
+}
+
+.settings-container label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.settings-container label input,
+.settings-container label select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Dark Mode Inputs */
+.settings-container.dark label input,
+.settings-container.dark label select {
+    background-color: var(--input-bg-dark);
+    color: var(--text-dark);
+    border: 1px solid var(--input-border-dark);
+}
+
+/* Dark Mode Buttons */
+.settings-container.dark .input-with-button button,
+.settings-container.dark button {
+    background-color: var(--primary-hover);
+}
+
+.settings-container.dark button:disabled {
+    background-color: var(--button-disabled-dark);
+}
+
+/* Dark Mode Save Button */
+.settings-container.dark .save-changes-btn {
+    background-color: #27ae60;
+}
+
+.settings-container.dark .save-changes-btn:hover {
+    background-color: #219150;
+}
+
+/* Dark Mode Modal */
+.settings-container.dark .modal-content {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+.input-with-button {
+    display: flex;
+    align-items: center;
+}
+
+.input-with-button input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.input-with-button button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.input-with-button button:hover {
+    background-color: #2980b9;
+}
+
+.settings-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4500ff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.settings-container button:hover {
+    background-color: #890da1;
+}
+
+.save-changes-btn {
+    background-color: #4500ff;
+}
+
+.save-changes-btn:hover {
+    background-color: #27ae60;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100%;
+    text-align: left;
+}
+
+.modal-content h3 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-content button {
+    margin-top: 10px;
+}
+
+/* Notification section */
+.notifications {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.notifications label {
+    margin-bottom: 0;
+    margin-right: 5px;
+}
+
+.notifications input[type="checkbox"] {
+    width: auto;
+    margin-left: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .settings-container {
+        padding: 20px;
+    }
+
+    .settings-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .settings-container label input,
+    .settings-container label select {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .settings-container button {
+        font-size: 14px;
+    }
+}
