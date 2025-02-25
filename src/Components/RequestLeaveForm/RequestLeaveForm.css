@@ -31,6 +31,11 @@
     transition: all 0.3s ease-in-out;
 }
 
+.request-leave-container {
+    padding-bottom: 40px;
+    /* Increase bottom padding */
+}
+
 /* Dark Mode Form */
 .request-leave-form.dark {
     background-color: var(--bg-dark);
@@ -179,4 +184,28 @@
     .request-leave-form button {
         font-size: 14px;
     }
+}
+
+.date-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.date-inputs {
+    display: flex;
+    gap: 15px;
+    /* Spacing between start and end date */
+}
+
+.date-inputs label {
+    flex: 1;
+    /* Make both labels take equal width */
+}
+
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
 }

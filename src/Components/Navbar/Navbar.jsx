@@ -4,10 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { FilePlus, CalendarCheck, User } from "lucide-react";
 import "./Navbar.css";
 import logo1 from "../../assets/logo1.png";
-import search_icon_light from "../../assets/search-w.png";
-import search_icon_dark from "../../assets/search-b.png";
-import toggle_light from "../../assets/night.png";
-import toggle_dark from "../../assets/day.png";
 
 const Navbar = ({ theme, setTheme, setIsAuthenticated }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -23,10 +19,6 @@ const Navbar = ({ theme, setTheme, setIsAuthenticated }) => {
       setUsername(storedEmail.split("@")[0]);
     }
   }, []);
-
-  const toggleMode = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -126,21 +118,6 @@ const Navbar = ({ theme, setTheme, setIsAuthenticated }) => {
           </li>
         </ul>
       </div>
-
-      <div className="search-box">
-        <input type="text" placeholder="Search..." />
-        <img
-          src={theme === "light" ? search_icon_light : search_icon_dark}
-          alt="search icon"
-        />
-      </div>
-
-      <img
-        onClick={toggleMode}
-        src={theme === "light" ? toggle_light : toggle_dark}
-        alt="toggle theme"
-        className="toggle"
-      />
     </div>
   );
 };

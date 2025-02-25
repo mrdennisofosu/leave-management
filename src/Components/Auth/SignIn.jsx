@@ -10,6 +10,12 @@ const SignIn = ({ setIsAuthenticated }) => {
   const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
   const [resetMethod, setResetMethod] = useState("email");
   const [resetContact, setResetContact] = useState("");
+  const [codeSent, setCodeSent] = useState(false);
+  const [verificationCode, setVerificationCode] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const [step, setStep] = useState(1);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -22,7 +28,7 @@ const SignIn = ({ setIsAuthenticated }) => {
 
     if (user) {
       // Store session data
-      localStorage.setItem("userToken", "dummyToken");
+      localStorage.setItem("Token", "dummyToken");
       localStorage.setItem("userEmail", email); // Ensure email is stored
       setIsAuthenticated(true);
       navigate("/request-leave"); // Redirect to request leave page
@@ -31,10 +37,47 @@ const SignIn = ({ setIsAuthenticated }) => {
     }
   };
 
-  const handleForgotPassword = () => {
+  const handleForgotPassword = (e) => {
+    e.preventDefault();
     // Handle forgot password logic here
-    setShowForgotPasswordModal(false);
-    console.log("Password reset instructions sent");
+    if (resetMethod === "email") {
+      console.log(`Password reset instructions sent to email: ${resetContact}`);
+    } else {
+      console.log(
+        `Password reset instructions sent to phone number: ${resetContact}`
+      );
+    }
+    setMessage("Password reset instructions have been sent.");
+    setCodeSent(true);
+    setStep(2);
+  };
+
+  const handleVerifyCode = (e) => {
+    e.preventDefault();
+    // Handle code verification logic here
+    console.log(`Verification code entered: ${verificationCode}`);
+    setMessage("Code verified. You can now reset your password.");
+    setStep(3);
+  };
+
+  const handleResetPassword = (e) => {
+    e.preventDefault();
+    if (newPassword !== confirmPassword) {
+      setMessage("Passwords do not match.");
+      return;
+    }
+    // Handle password reset logic here
+    console.log(`Password reset to: ${newPassword}`);
+    setMessage("Password has been reset successfully.");
+    setTimeout(() => {
+      setShowForgotPasswordModal(false);
+      setMessage("");
+      setCodeSent(false);
+      setVerificationCode("");
+      setNewPassword("");
+      setConfirmPassword("");
+      setStep(1);
+    }, 3000); // Close modal after 3 seconds
   };
 
   return (
@@ -90,38 +133,104 @@ const SignIn = ({ setIsAuthenticated }) => {
         <div className="modal">
           <div className="modal-content">
             <h3>Forgot Password</h3>
-            <label>
-              Reset via:
-              <select
-                value={resetMethod}
-                onChange={(e) => setResetMethod(e.target.value)}
-              >
-                <option value="email">Email</option>
-                <option value="sms">SMS</option>
-              </select>
-            </label>
-            {resetMethod === "email" ? (
-              <label>
-                Email:
-                <input
-                  type="email"
-                  value={resetContact}
-                  onChange={(e) => setResetContact(e.target.value)}
-                />
-              </label>
-            ) : (
-              <label>
-                Phone Number:
-                <input
-                  type="tel"
-                  value={resetContact}
-                  onChange={(e) => setResetContact(e.target.value)}
-                />
-              </label>
+            {step === 1 && (
+              <form onSubmit={handleForgotPassword} className="auth-form">
+                <label>
+                  Reset via:
+                  <select
+                    value={resetMethod}
+                    onChange={(e) => setResetMethod(e.target.value)}
+                  >
+                    <option value="email">Email</option>
+                    <option value="sms">SMS</option>
+                  </select>
+                </label>
+                {resetMethod === "email" ? (
+                  <div className="input-group">
+                    <label>Email</label>
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
+                      value={resetContact}
+                      onChange={(e) => setResetContact(e.target.value)}
+                      required
+                    />
+                  </div>
+                ) : (
+                  <div className="input-group">
+                    <label>Phone Number</label>
+                    <input
+                      type="tel"
+                      placeholder="Enter your phone number"
+                      value={resetContact}
+                      onChange={(e) => setResetContact(e.target.value)}
+                      required
+                    />
+                  </div>
+                )}
+                <button type="submit" className="auth-btn">
+                  Send Reset Instructions
+                </button>
+              </form>
             )}
-            <button onClick={handleForgotPassword}>Save</button>
-            <button onClick={() => setShowForgotPasswordModal(false)}>
-              Cancel
+            {step === 2 && (
+              <form onSubmit={handleVerifyCode} className="auth-form">
+                <div className="input-group">
+                  <label>Verification Code</label>
+                  <input
+                    type="text"
+                    placeholder="Enter the code sent to you"
+                    value={verificationCode}
+                    onChange={(e) => setVerificationCode(e.target.value)}
+                    required
+                  />
+                </div>
+                <button type="submit" className="auth-btn">
+                  Verify Code
+                </button>
+              </form>
+            )}
+            {step === 3 && (
+              <form onSubmit={handleResetPassword} className="auth-form">
+                <div className="input-group">
+                  <label>New Password</label>
+                  <input
+                    type="password"
+                    placeholder="Enter your new password"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="input-group">
+                  <label>Confirm Password</label>
+                  <input
+                    type="password"
+                    placeholder="Confirm your new password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <button type="submit" className="auth-btn">
+                  Reset Password
+                </button>
+              </form>
+            )}
+            {message && <p className="success-message">{message}</p>}
+            <button
+              onClick={() => {
+                setShowForgotPasswordModal(false);
+                setCodeSent(false);
+                setMessage("");
+                setVerificationCode("");
+                setNewPassword("");
+                setConfirmPassword("");
+                setStep(1);
+              }}
+              className="auth-btn"
+            >
+              Close
             </button>
           </div>
         </div>

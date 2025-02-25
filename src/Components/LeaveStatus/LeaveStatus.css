@@ -51,6 +51,11 @@
     overflow-x: auto;
 }
 
+.main-leave-status-container{
+    padding-bottom: 250px;
+        /* Increase bottom padding */
+}
+
 /* Leave Status Title - Ensuring White in Dark Mode */
 .leave-status-container h2 {
     text-align: center;

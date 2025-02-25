@@ -63,36 +63,37 @@ const Settings = () => {
   };
 
   return (
-    <div className={`settings-container ${theme}`}>
-      <h2>Settings</h2>
+    <div className="main-settings-container">
+      <div className={`settings-container ${theme}`}>
+        <h2>Settings</h2>
 
-      <section className="notifications">
-        <label>
-          Enable Notifications:
-          <input
-            type="checkbox"
-            checked={notifications}
-            onChange={(e) => setNotifications(e.target.checked)}
-          />
-        </label>
-      </section>
+        <section className="notifications">
+          <label>
+            Enable Notifications:
+            <input
+              type="checkbox"
+              checked={notifications}
+              onChange={(e) => setNotifications(e.target.checked)}
+            />
+          </label>
+        </section>
 
-      <section className="account-settings">
-        <h3>Account Info</h3>
+        <section className="account-settings">
+          <h3>Account Info</h3>
 
-        <div className="input-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            readOnly
-          />
-          <button onClick={() => setShowChangeEmailModal(true)}>
-            Change Email
-          </button>
-        </div>
-        {/* <div className="input-group">
+          <div className="input-group">
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              readOnly
+            />
+            <button onClick={() => setShowChangeEmailModal(true)}>
+              Change Email
+            </button>
+          </div>
+          {/* <div className="input-group">
           <label>Username:</label>
           <input
             type="text"
@@ -104,123 +105,126 @@ const Settings = () => {
             Change Username
           </button>
         </div> */}
-        <label>
-          Recovery Email:
-          <input
-            type="email"
-            value={recoveryEmail}
-            onChange={(e) => setRecoveryEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          Phone Number:
-          <input
-            type="tel"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-          />
-        </label>
-      </section>
+          <label>
+            Recovery Email:
+            <input
+              type="email"
+              value={recoveryEmail}
+              onChange={(e) => setRecoveryEmail(e.target.value)}
+            />
+          </label>
+          <label>
+            Phone Number:
+            <input
+              type="tel"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+          </label>
+        </section>
 
-      <section className="security-settings">
-        <h3>Security</h3>
-        <button onClick={() => setShowPasswordModal(true)}>
-          Change Password
+        <section className="security-settings">
+          <h3>Security</h3>
+          <button onClick={() => setShowPasswordModal(true)}>
+            Change Password
+          </button>
+        </section>
+
+        <section className="preferences">
+          <h3>Preferences</h3>
+          <label>
+            Theme:
+            <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="system">System Default</option>
+            </select>
+          </label>
+        </section>
+
+        <button onClick={handleSaveChanges} className="save-changes-btn">
+          Save Changes
         </button>
-      </section>
 
-      <section className="preferences">
-        <h3>Preferences</h3>
-        <label>
-          Theme:
-          <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="system">System Default</option>
-          </select>
-        </label>
-      </section>
-
-      <button onClick={handleSaveChanges} className="save-changes-btn">
-        Save Changes
-      </button>
-
-      {showConfirmation && (
-        <div className="modal">
-          <div className="modal-content">
-            <h3>Confirm Changes</h3>
-            <p>Do you want to save these changes?</p>
-            <button onClick={confirmSaveChanges}>Yes</button>
-            <button onClick={() => setShowConfirmation(false)}>No</button>
+        {showConfirmation && (
+          <div className="modal">
+            <div className="modal-content">
+              <h3>Confirm Changes</h3>
+              <p>Do you want to save these changes?</p>
+              <button onClick={confirmSaveChanges}>Yes</button>
+              <button onClick={() => setShowConfirmation(false)}>No</button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {showPasswordModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <h3>Change Password</h3>
-            <label>
-              Current Password:
-              <input
-                type="password"
-                value={currentPassword}
-                onChange={(e) => setCurrentPassword(e.target.value)}
-              />
-            </label>
-            <label>
-              New Password:
-              <input
-                type="password"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-              />
-            </label>
-            <button onClick={handlePasswordChange}>Save</button>
-            <button onClick={() => setShowPasswordModal(false)}>Cancel</button>
+        {showPasswordModal && (
+          <div className="modal">
+            <div className="modal-content">
+              <h3>Change Password</h3>
+              <label>
+                Current Password:
+                <input
+                  type="password"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                />
+              </label>
+              <label>
+                New Password:
+                <input
+                  type="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+              </label>
+              <button onClick={handlePasswordChange}>Save</button>
+              <button onClick={() => setShowPasswordModal(false)}>
+                Cancel
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {showChangeEmailModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <h3>Change Email</h3>
-            <label>
-              New Email:
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </label>
-            <button onClick={handleChangeEmail}>Save</button>
-            <button onClick={() => setShowChangeEmailModal(false)}>
-              Cancel
-            </button>
+        {showChangeEmailModal && (
+          <div className="modal">
+            <div className="modal-content">
+              <h3>Change Email</h3>
+              <label>
+                New Email:
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </label>
+              <button onClick={handleChangeEmail}>Save</button>
+              <button onClick={() => setShowChangeEmailModal(false)}>
+                Cancel
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {showChangeUsernameModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <h3>Change Username</h3>
-            <label>
-              New Username:
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </label>
-            <button onClick={handleChangeUsername}>Save</button>
-            <button onClick={() => setShowChangeUsernameModal(false)}>
-              Cancel
-            </button>
+        {showChangeUsernameModal && (
+          <div className="modal">
+            <div className="modal-content">
+              <h3>Change Username</h3>
+              <label>
+                New Username:
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </label>
+              <button onClick={handleChangeUsername}>Save</button>
+              <button onClick={() => setShowChangeUsernameModal(false)}>
+                Cancel
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
