@@ -108,7 +108,7 @@
 /* Dark Mode Buttons */
 .settings-container.dark .input-with-button button,
 .settings-container.dark button {
-    background-color: #872657;
+    background-color: #4500ff;
 }
 
 .settings-container.dark button:disabled {
@@ -117,11 +117,13 @@
 
 /* Dark Mode Save Button */
 .settings-container.dark .save-changes-btn {
-    background-color: #872657;
+    background-color: #4500ff;
+    font: 500;
 }
 
 .settings-container.dark .save-changes-btn:hover {
-    background-color: #300638;
+    background-color: #6933FF;
+    font: 500;
 }
 
 /* Dark Mode Modal */
@@ -144,14 +146,15 @@
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
-    background-color: #b768a2;
+    background-color: #4500ff;
     color: white;
     cursor: pointer;
     font-size: 14px;
+    font: 500px;
 }
 
 .input-with-button button:hover {
-    background-color: #300638;
+    background-color: #6933FF;
 }
 
 .settings-container button {
@@ -161,22 +164,24 @@
     margin-top: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #872657;
+    background-color: #4500ff;
     color: white;
     cursor: pointer;
     font-size: 16px;
+    font: 500px;
 }
 
 .settings-container button:hover {
-    background-color: #300638;
+    background-color: #6933FF;
 }
 
 .save-changes-btn {
-    background-color: #872657;
+    background-color: #4500ff;
+    font: 500px;
 }
 
 .save-changes-btn:hover {
-    background-color: #300638;
+    background-color: #6933FF;
 }
 
 .modal {

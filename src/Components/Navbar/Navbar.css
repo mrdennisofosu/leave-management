@@ -96,7 +96,7 @@
     background-color: rgba(30, 109, 194, 0.2);
     border-radius: 20px;
     /* Increase radius for a bigger hover effect */
-    padding: 8px 12px;
+    padding: 12px 12px;
     /* Increase padding to make the hover area larger */
     transition: all 0.3s ease-in-out;
 }
@@ -149,20 +149,13 @@
 }
 
 
-/* Default Logo */
+
 .logo {
-    width: 150px;
+    width: 120px;
     height: auto;
-    filter: brightness(0) saturate(100%) invert(32%) sepia(94%) saturate(490%) hue-rotate(90deg) brightness(94%) contrast(98%);
     transition: filter 0.3s ease-in-out;
 }
 
-/* Dark Mode - Green Logo with Visible Light Green */
-@media (prefers-color-scheme: dark) {
-    .logo {
-        filter: brightness(0) saturate(100%) invert(44%) sepia(75%) saturate(2500%) hue-rotate(120deg) brightness(90%) contrast(95%);
-    }
-}
 
 .logo-container {
     display: flex;
@@ -173,12 +166,12 @@
 .subscript-text {
     display: flex;
     flex-direction: column;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 500;
     color: inherit;
     opacity: 0.6;
     line-height: 1.0;
-    margin-left: 3px;
+    margin-left: 0.2px;
 }
 
 .nav-items {
@@ -196,7 +189,7 @@
 
 /* Mobile view adjustments */
 .menu-button {
-    display: none;
+    display: block;
     font-size: 24px;
     cursor: pointer;
 }
@@ -228,12 +221,12 @@
     .nav-links li {
         width: 100%;
         text-align: center;
-        padding: 10px 0;
+        padding: 10px 10px;
     }
 
     .search-box {
         margin-left: 0;
-        margin-top: 10px;
+        margin-top: 5px;
     }
 }
 
