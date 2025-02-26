@@ -122,7 +122,7 @@ const Settings = () => {
         <section className="preferences-section">
           <h3>Preferences</h3>
           <label>
-            Theme:
+            Theme:<p></p>
             <select
               className="preference"
               value={theme}
