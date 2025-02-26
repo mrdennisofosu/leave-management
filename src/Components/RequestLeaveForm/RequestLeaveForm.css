@@ -214,6 +214,8 @@
     text-align: center;
     transition: opacity 0.5s ease-in-out;
 }
+
+
 @media (max-width: 480px) {
     .mobile {
         width: 40%;

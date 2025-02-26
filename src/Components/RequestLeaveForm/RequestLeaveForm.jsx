@@ -4,9 +4,19 @@ import { LeaveContext } from "../LeaveContext/LeaveContext";
 import "./RequestLeaveForm.css";
 
 const holidays = [
-  "2025-01-01", // Example: New Year's Day
-  "2025-12-25", // Example: Christmas
-  // Add more holiday dates in YYYY-MM-DD format
+  "2025-01-01", // New Year's Day
+  "2025-03-06", // Independence Day
+  "2025-04-18", // Good Friday
+  "2025-04-21", // Easter Monday
+  "2025-05-01", // Workers' Day
+  "2025-05-25", // Africa Unity Day
+  "2025-07-01", // Republic Day
+  "2025-08-04", // Founders' Day
+  "2025-09-21", // Kwame Nkrumah Memorial Day
+  "2025-12-01", // Farmer's Day
+  "2025-12-25", // Christmas Day
+  "2025-12-26", // Boxing Day
+  // Add more holiday dates in YYYY-MM-DD format as needed
 ];
 
 const RequestLeaveForm = ({ theme }) => {
