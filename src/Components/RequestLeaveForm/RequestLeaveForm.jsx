@@ -36,9 +36,25 @@ const RequestLeaveForm = ({ theme }) => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false); // Success message state
 
   const calculateBusinessDays = (start, end) => {
-    let count = 0;
-    let currentDate = new Date(start);
+    const startDate = new Date(start);
     const endDate = new Date(end);
+
+    // Extract years and ensure they are four-digit numbers
+    const startYear = startDate.getFullYear();
+    const endYear = endDate.getFullYear();
+
+    if (
+      startYear < 1000 ||
+      startYear > 9999 ||
+      endYear < 1000 ||
+      endYear > 9999
+    ) {
+      console.error("Invalid date: Please enter a valid four-digit year.");
+      return 0;
+    }
+
+    let count = 0;
+    let currentDate = new Date(startDate);
 
     while (currentDate <= endDate) {
       const dayOfWeek = currentDate.getDay();
@@ -53,6 +69,7 @@ const RequestLeaveForm = ({ theme }) => {
       }
       currentDate.setDate(currentDate.getDate() + 1);
     }
+
     return count;
   };
 
