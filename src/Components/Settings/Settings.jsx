@@ -80,9 +80,8 @@ const Settings = () => {
 
         <section className="account-settings">
           <h3>Account Info</h3>
-
-          <div className="input-group">
-            <label>Email:</label>
+          <label>
+            Email:
             <input
               type="email"
               value={email}
@@ -91,20 +90,10 @@ const Settings = () => {
             />
             <button onClick={() => setShowChangeEmailModal(true)}>
               Change Email
-            </button>
-          </div>
-          {/* <div className="input-group">
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            readOnly
-          />
-          <button onClick={() => setShowChangeUsernameModal(true)}>
-            Change Username
-          </button>
-        </div> */}
+            </button>{" "}
+          </label>
+
+          <p></p>
           <label>
             Recovery Email:
             <input
@@ -130,11 +119,15 @@ const Settings = () => {
           </button>
         </section>
 
-        <section className="preferences">
+        <section className="preferences-section">
           <h3>Preferences</h3>
           <label>
             Theme:
-            <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+            <select
+              className="preference"
+              value={theme}
+              onChange={(e) => setTheme(e.target.value)}
+            >
               <option value="light">Light</option>
               <option value="dark">Dark</option>
               <option value="system">System Default</option>
@@ -150,7 +143,7 @@ const Settings = () => {
           <div className="modal">
             <div className="modal-content">
               <h3>Confirm Changes</h3>
-              <p>Do you want to save these changes?</p>
+              <label>Do you want to save these changes?</label>
               <button onClick={confirmSaveChanges}>Yes</button>
               <button onClick={() => setShowConfirmation(false)}>No</button>
             </div>
@@ -205,7 +198,7 @@ const Settings = () => {
           </div>
         )}
 
-        {showChangeUsernameModal && (
+        {/* {showChangeUsernameModal && (
           <div className="modal">
             <div className="modal-content">
               <h3>Change Username</h3>
@@ -223,7 +216,7 @@ const Settings = () => {
               </button>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

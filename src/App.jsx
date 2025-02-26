@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import RequestLeaveForm from "./Components/RequestLeaveForm/RequestLeaveForm";
@@ -19,19 +20,44 @@ const BlankPage = () => <div className="blank-page"></div>;
 
 const AppContent = () => {
   const { theme } = useContext(ThemeContext);
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    () => !!localStorage.getItem("userToken") // Check authentication on page load
-  );
+  const location = useLocation();
+
+  // Persist authentication state on refresh
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthChecked, setIsAuthChecked] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("userToken");
+    if (token) {
+      setIsAuthenticated(true);
+    }
+    setIsAuthChecked(true); // Authentication check completed
+  }, []);
+
+  useEffect(() => {
+    // Keep authentication state in sync with localStorage
+    const handleStorageChange = () => {
+      setIsAuthenticated(localStorage.getItem("userToken") !== null);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
+
+  const isAuthPage =
+    location.pathname === "/signin" || location.pathname === "/signup";
+
+  if (!isAuthChecked) {
+    return <div>Loading...</div>; // Prevent redirect flicker during check
+  }
 
   return (
-    <div className={`app ${theme}`}>
-      {/* Show Navbar only if user is authenticated */}
-      {isAuthenticated && (
+    <div className={`app ${isAuthPage ? "light-mode" : theme}`}>
+      {isAuthenticated && !isAuthPage && (
         <Navbar theme={theme} setIsAuthenticated={setIsAuthenticated} />
       )}
       <div className="content">
         <Routes>
-          {/* Redirect users based on authentication */}
           <Route
             path="/"
             element={
@@ -42,15 +68,13 @@ const AppContent = () => {
               )
             }
           />
-
-          {/* Authentication Routes */}
           <Route
             path="/signin"
             element={<SignIn setIsAuthenticated={setIsAuthenticated} />}
           />
           <Route path="/signup" element={<SignUp />} />
 
-          {/* Protected Routes (Accessible only if logged in) */}
+          {/* Protected Routes */}
           <Route
             path="/request-leave"
             element={
@@ -88,8 +112,8 @@ const AppContent = () => {
             element={isAuthenticated ? <Settings /> : <Navigate to="/signin" />}
           />
 
-          {/* Redirect all unknown routes to Sign In */}
-          <Route path="*" element={<Navigate to="/signin" />} />
+          {/* Redirect all unknown routes to Sign In
+          <Route path="*" element={<Navigate to="/signin" />} /> */}
         </Routes>
       </div>
     </div>

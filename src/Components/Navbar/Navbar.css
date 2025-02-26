@@ -125,9 +125,27 @@
     margin: 0;
 }
 
-.dark .request-leave:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+/* Dark theme dropdown menu */
+.navbar.dark .dropdown-menu {
+    background-color: #333;
+    /* Dark background */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    border: 1px solid #555;
 }
+
+.navbar.dark .dropdown-menu li a {
+    color: #fff;
+    /* Light text for contrast */
+}
+
+.navbar.dark .dropdown-menu li:hover {
+    background-color: #555;
+    /* Slightly lighter background on hover */
+}
+
+/* .dark .request-leave:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+} */
 
 /* Icon styling */
 .icon {
@@ -240,6 +258,46 @@
     z-index: 1100;
 }
 
+/* Dark theme dropdown for mobile view */
+@media (max-width: 768px) {
+    .navbar.dark .nav-items {
+        background-color: #333;
+        /* Dark background for the mobile menu */
+    }
+
+    .navbar.dark .nav-links {
+        background-color: #333;
+    }
+
+    .navbar.dark .nav-links li {
+        color: #fff;
+        border-bottom: 1px solid #555;
+    }
+
+    .navbar.dark .nav-links li a {
+        color: #fff;
+    }
+
+    .navbar.dark .nav-links li:hover {
+        background-color: #555;
+        /* Slightly lighter background for hover */
+    }
+
+    .navbar.dark .dropdown-menu {
+        background-color: #333;
+        /* Dark background for dropdown */
+        border: 1px solid #555;
+    }
+
+    .navbar.dark .dropdown-menu li a {
+        color: #fff;
+    }
+
+    .navbar.dark .dropdown-menu li:hover {
+        background-color: #555;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-container {
         display: flex;
@@ -275,6 +333,6 @@
         /* Added spacing between toggle and menu button */
     }
 
-   
-   
+
+
 }

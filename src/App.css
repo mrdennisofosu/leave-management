@@ -11,15 +11,21 @@
     color: #333;
 }
 
+/* Dark Theme */
 .app.dark {
     background-color: #1e1e1e;
     color: #ffffff;
 }
 
-/* Login Page Light Background */
+/* Ensure sign-in & sign-up pages stay in light mode */
+.app.light-mode {
+    background-color: white !important;
+    color: black !important;
+}
+
+/* Styling for authentication pages */
 .auth-container {
     background-color: #ffffff;
-    /* Ensure login page is always light */
     color: #333;
     padding: 20px;
     border-radius: 8px;
@@ -40,7 +46,8 @@
     --table-hover-bg: #f1f1f1;
 }
 
-.button{
+/* Button Styles */
+.button {
     background-color: #4500ff;
     color: white;
     border: none;
@@ -51,3 +58,14 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
+
+/* Ensure dark theme does not affect form inputs on sign-in and sign-up pages */
+.app.light-mode .auth-container input {
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid var(--border-color);
+}
+
+
+
+

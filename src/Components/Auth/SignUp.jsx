@@ -27,71 +27,73 @@ const SignUp = () => {
   };
 
   return (
-    <div className="auth-container">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit} className="auth-form">
-        <div className="input-group">
-          <label>Full Name</label>
-          <input
-            type="text"
-            name="fullName"
-            placeholder="Enter your full name"
-            value={userData.fullName}
-            onChange={handleChange}
-            required
-          />
-        </div>
+    <div className="main-auth-container">
+      <div className="auth-container">
+        <h2>Sign Up</h2>
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="input-group">
+            <label>Full Name</label>
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Enter your full name"
+              value={userData.fullName}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="input-group">
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            value={userData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="input-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              value={userData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="input-group">
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Create a password"
-            value={userData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="input-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Create a password"
+              value={userData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="input-group">
-          <label>Confirm Password</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm your password"
-            value={userData.confirmPassword}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="input-group">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm your password"
+              value={userData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <button type="submit" className="auth-btn">
-          Sign Up
-        </button>
+          <button type="submit" className="auth-btn">
+            Sign Up
+          </button>
 
-        <div className="social-login">
-          <button className="google-btn">Sign up with Google</button>
-          <button className="facebook-btn">Sign up with Facebook</button>
-          <button className="apple-btn">Sign up with Apple</button>
-        </div>
+          <div className="social-login">
+            <button className="google-btn">Sign up with Google</button>
+            <button className="facebook-btn">Sign up with Facebook</button>
+            <button className="apple-btn">Sign up with Apple</button>
+          </div>
 
-        <p>
-          Already have an account? <Link to="/signin">Sign In</Link>
-        </p>
-      </form>
+          <p>
+            Already have an account? <Link to="/signin">Sign In</Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 };

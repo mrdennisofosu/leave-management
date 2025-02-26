@@ -98,8 +98,9 @@ const RequestLeaveForm = ({ theme }) => {
 
         <section className="leave-type-section">
           <label>
-            Leave Type:
+            Leave Type: <p></p>
             <select
+              className="mobile"
               value={leaveType}
               onChange={(e) => setLeaveType(e.target.value)}
               required
@@ -195,47 +196,49 @@ const RequestLeaveForm = ({ theme }) => {
             required
           />
         </label>
-
-        <label>
-          Approval Manager:
-          <select
-            value={approvalManager}
-            onChange={(e) => setApprovalManager(e.target.value)}
-            required
-          >
-            <option value="">Select an approval manager</option>
-            <option value="Sarah Johnson (HR Manager)">
-              Sarah Johnson (HR Manager)
-            </option>
-            <option value="Emma Davis (Project Manager)">
-              Emma Davis (Project Manager)
-            </option>
-            <option value="William Harris (Team Leader)">
-              William Harris (Team Leader)
-            </option>
-            <option value="Emily Thompson (Operations Manager)">
-              Emily Thompson (Operations Manager)
-            </option>
-            <option value="Lucas Anderson (Finance Manager)">
-              Lucas Anderson (Finance Manager)
-            </option>
-            <option value="Charlotte Wilson (Senior Supervisor)">
-              Charlotte Wilson (Senior Supervisor)
-            </option>
-            <option value="Henry Clark (HR Manager)">
-              Henry Clark (HR Manager)
-            </option>
-            <option value="Liam Collins (Project Director)">
-              Liam Collins (Project Director)
-            </option>
-            <option value="Mason Wright (IT Manager)">
-              Mason Wright (IT Manager)
-            </option>
-            <option value="Isabella Cooper (General Manager)">
-              Isabella Cooper (General Manager)
-            </option>
-          </select>
-        </label>
+        <section className="approval-manager-section">
+          <label>
+            Approval Manager: <p></p>
+            <select
+              className="mobile"
+              value={approvalManager}
+              onChange={(e) => setApprovalManager(e.target.value)}
+              required
+            >
+              <option value="">Select an approval manager</option>
+              <option value="Sarah Johnson (HR Manager)">
+                Sarah Johnson (HR Manager)
+              </option>
+              <option value="Emma Davis (Project Manager)">
+                Emma Davis (Project Manager)
+              </option>
+              <option value="William Harris (Team Leader)">
+                William Harris (Team Leader)
+              </option>
+              <option value="Emily Thompson (Operations Manager)">
+                Emily Thompson (Operations Manager)
+              </option>
+              <option value="Lucas Anderson (Finance Manager)">
+                Lucas Anderson (Finance Manager)
+              </option>
+              <option value="Charlotte Wilson (Senior Supervisor)">
+                Charlotte Wilson (Senior Supervisor)
+              </option>
+              <option value="Henry Clark (HR Manager)">
+                Henry Clark (HR Manager)
+              </option>
+              <option value="Liam Collins (Project Director)">
+                Liam Collins (Project Director)
+              </option>
+              <option value="Mason Wright (IT Manager)">
+                Mason Wright (IT Manager)
+              </option>
+              <option value="Isabella Cooper (General Manager)">
+                Isabella Cooper (General Manager)
+              </option>
+            </select>
+          </label>
+        </section>
 
         <label>
           <input
