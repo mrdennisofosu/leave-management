@@ -192,7 +192,7 @@
     margin-left: 0.2px;
 }
 
-.nav-items {
+/* .nav-items {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -200,17 +200,17 @@
     margin-left: 10px;
     padding-left: 10px;
     max-width: 600px;
-}
+} */
 
 
 
 
 /* Mobile view adjustments */
-.menu-button {
+/* .menu-button {
     display: block;
     font-size: 24px;
     cursor: pointer;
-}
+} */
 
 .nav-items {
     display: flex;
@@ -296,7 +296,6 @@
     .navbar.dark .dropdown-menu li:hover {
         background-color: #555;
     }
-}
 
 @media (max-width: 768px) {
     .nav-container {
@@ -332,7 +331,6 @@
         margin-left: 20px;
         /* Added spacing between toggle and menu button */
     }
-
-
-
 }
+}
+

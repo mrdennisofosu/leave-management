@@ -36,6 +36,8 @@
     /* Increase bottom padding */
 }
 
+
+
 /* Dark Mode Form */
 .request-leave-form.dark {
     background-color: var(--bg-dark);
