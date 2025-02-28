@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link, useNavigate } from "react-router-dom";
 import { FilePlus, CalendarCheck, User } from "lucide-react";
 import "./Navbar.css";
-import mojoLogo from "../../assets/mojoLogo.png";
+import logo1 from "../../assets/logo1.png";
 
 const Navbar = ({ theme, setTheme, setIsAuthenticated }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -48,7 +48,7 @@ const Navbar = ({ theme, setTheme, setIsAuthenticated }) => {
       <div className="logo-container">
         <Link to="/">
           <img
-            src={mojoLogo}
+            src={logo1}
             alt="Logo"
             className={`logo ${theme === "dark" ? "dark-logo" : ""}`}
           />
